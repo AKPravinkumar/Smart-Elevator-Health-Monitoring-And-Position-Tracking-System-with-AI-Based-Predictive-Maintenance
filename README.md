@@ -132,6 +132,7 @@ Smart-Elevator-System/
 └── README.md
 
 ## Images
+
 ## Digital Twin Dashboard
 
 ![Digital Twin Dashboard](Images/digital-twin-dashboard.png)
