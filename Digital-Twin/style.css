@@ -1,0 +1,1033 @@
+/* ==============================
+   ELEV-X1 DIGITAL TWIN THEME
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0b1020;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Main Container */
+
+.app-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 15px;
+}
+
+
+/* ==============================
+   HEADER
+============================== */
+
+.app-header {
+    height: 80px;
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 25px;
+    margin-bottom: 15px;
+}
+
+
+.brand-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.brand-logo {
+    width: 40px;
+    height: 40px;
+    color: #00e5ff;
+}
+
+
+.brand-title {
+    font-size: 22px;
+    color: #00e5ff;
+    letter-spacing: 1px;
+}
+
+
+/* System Status */
+
+.system-status-indicator {
+    background: #042f2e;
+    color: #4ade80;
+
+    padding: 8px 16px;
+
+    border-radius: 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+
+    background: #4ade80;
+    border-radius: 50%;
+
+    animation: blink 1s infinite;
+}
+
+
+@keyframes blink {
+
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+
+/* Header Information */
+
+.header-meta {
+    display: flex;
+    gap: 25px;
+}
+
+
+.meta-item {
+    text-align: center;
+}
+
+
+.meta-item label {
+    display: block;
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+
+.meta-item span {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* ==============================
+   MAIN DASHBOARD GRID
+============================== */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 25% 45% 30%;
+    gap: 15px;
+    align-items: start;
+}
+
+
+/* ==============================
+   COMMON PANELS
+============================== */
+
+.panel,
+.telemetry-dashboard,
+.control-panel {
+
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    padding: 15px;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+
+.panel-header {
+    margin-bottom: 15px;
+}
+
+
+.panel-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #00e5ff;
+
+    font-size: 18px;
+
+}
+
+
+.panel-title svg {
+
+    width: 22px;
+
+    height: 22px;
+
+}
+
+
+/* Custom Scroll Bar */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #0b1020;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #00e5ff;
+    border-radius: 5px;
+}
+/* ==============================
+   SHAFT VIEW
+============================== */
+
+.shaft-viewport {
+    position: relative;
+    width: 100%;
+    height: 1100px;
+    background: #0b1220;
+    border: 2px solid #334155;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.shaft-lane {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Floor markers */
+
+.shaft-floor {
+    position: absolute;
+    left: 10px;
+    width: 100%;
+    height: 2px;
+    background: #334155;
+
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+
+    text-shadow: 0 0 5px #00e5ff;
+    transform: none;
+}
+
+
+/* Elevator Cabin */
+
+.elevator-car {
+    position: absolute;
+    left: 25%;
+    width: 90px;
+    height: 90px;
+    background: #1e293b;
+    border: 2px solid #00e5ff;
+    border-radius: 8px;
+    transition: bottom 2s ease;
+    box-shadow: 0 0 20px #00e5ff;
+}
+
+
+.car-top {
+    text-align: center;
+    background: #00e5ff;
+    color: black;
+    font-weight: bold;
+    padding: 5px;
+}
+
+
+/* Doors */
+
+.car-door-container {
+    display: flex;
+    height: 75px;
+}
+
+.door {
+    width: 50%;
+    height: 100%;
+    background: #64748b;
+    border: 1px solid #0f172a;
+    transition: 1s;
+}
+
+
+/* Passenger Area */
+
+.passenger-container {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    font-size: 18px;
+}
+
+
+/* Counterweight */
+
+.counterweight {
+    position: absolute;
+    right: 15%;
+    width: 60px;
+    height: 80px;
+    background: #475569;
+    border: 2px solid #facc15;
+    color: white;
+    text-align: center;
+    line-height: 80px;
+    font-weight: bold;
+    transition: bottom 2s ease;
+}
+/* ==============================
+   TELEMETRY DASHBOARD
+============================== */
+
+.telemetry-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+/* Top status cards */
+
+.core-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+
+.stat-card {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.15);
+}
+
+
+.stat-label {
+    color: #94a3b8;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+
+.stat-card h2 {
+    margin-top: 10px;
+    color: #00e5ff;
+    font-size: 22px;
+}
+
+
+/* ==============================
+   SENSOR MATRIX
+============================== */
+
+.sensor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    align-items: start;
+}
+
+
+.sensor-card {
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-left: 4px solid #00e5ff;
+    border-radius: 10px;
+    padding: 15px;
+    transition: 0.3s;
+}
+
+
+.sensor-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+}
+
+
+.sensor-card h3 {
+    color: #cbd5e1;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+
+.sensor-value {
+    color: #00e5ff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+/* ==============================
+   LOAD BAR
+============================== */
+
+.load-bar {
+    width: 100%;
+    height: 15px;
+    background: #334155;
+    border-radius: 15px;
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+
+#tel-weight-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        #22c55e,
+        #eab308,
+        #ef4444
+    );
+    border-radius: 15px;
+    transition: width 0.5s ease;
+}
+
+
+/* ==============================
+   HEALTH STATUS
+============================== */
+
+#system-health {
+    color: #22c55e;
+}
+
+
+#health-status {
+    color: #22c55e;
+    font-weight: bold;
+}
+
+
+/* ==============================
+   SMALL ANIMATIONS
+============================== */
+
+.sensor-value {
+    transition: 0.3s;
+}
+
+
+.sensor-card.active {
+    animation: pulse 1s infinite;
+}
+
+
+@keyframes pulse {
+
+    0% {
+        box-shadow: 0 0 5px #00e5ff;
+    }
+
+    50% {
+        box-shadow: 0 0 20px #00e5ff;
+    }
+
+    100% {
+        box-shadow: 0 0 5px #00e5ff;
+    }
+
+}
+/* ==============================
+   CONTROL PANEL
+============================== */
+
+.control-card {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 15px;
+    min-height: 180px;
+}
+
+
+.control-card h3 {
+    color: #00e5ff;
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+.control-card p {
+    font-size: 18px;
+}
+.control-card:nth-child(3) {
+    min-height: 300px;
+}
+
+
+/* ==============================
+   FLOOR BUTTONS
+============================== */
+
+.floor-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+
+.floor-btn {
+    height: 60px;
+    background: #1e293b;
+    color: white;
+    border: 1px solid #00e5ff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+
+.floor-btn:hover {
+    background: #00e5ff;
+    color: black;
+    transform: scale(1.05);
+}
+
+
+.floor-btn:active {
+    transform: scale(0.95);
+}
+
+
+/* ==============================
+   LOAD SLIDER
+============================== */
+
+#payload-slider {
+    width: 100%;
+    margin-top: 15px;
+    cursor: pointer;
+    height: 8px;
+}
+#payload-value {
+    font-size: 22px;
+    font-weight: bold;
+    color: #00e5ff;
+}
+
+
+/* ==============================
+   FAULT SWITCHES
+============================== */
+
+.fault-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    font-size: 18px;
+    color: #cbd5e1;
+    cursor: pointer;
+    
+}
+
+
+.fault-item input {
+    width: 18px;
+    height: 18px;
+}
+
+
+/* ==============================
+   EVENT LOG
+============================== */
+
+.log-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#clear-log {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+
+#clear-log:hover {
+    background: #dc2626;
+}
+
+
+#event-log {
+    background: black;
+    color: #00ff66;
+    font-family: "Courier New", monospace;
+    font-size: 13px;
+    height: 350px;
+    overflow-y: auto;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+}
+
+
+#event-log p {
+    margin-bottom: 8px;
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 1100px) {
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+
+    .shaft-viewport {
+        height: 500px;
+    }
+
+
+    .core-stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .floor-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+
+    .core-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .app-header {
+        flex-direction: column;
+        height: auto;
+        gap: 10px;
+        padding: 15px;
+    }
+
+}
+/* ==============================
+   LiDAR SENSOR & SMART ETA PANEL
+============================== */
+
+#lidar-distance {
+    color: #00ffcc;
+    font-weight: bold;
+    text-shadow: 0 0 8px #00ffcc;
+}
+
+
+/* ETA Panel */
+
+#eta-panel {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+/* Individual Floor ETA */
+
+.eta-item {
+    background: #0b1220;
+    border: 1px solid #334155;
+    border-left: 4px solid #00e5ff;
+    padding: 8px 12px;
+    border-radius: 6px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #ffffff;
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+
+/* Hover Effect */
+
+.eta-item:hover {
+    transform: translateX(5px);
+    border-left-color: #22c55e;
+    box-shadow: 0 0 10px #00e5ff;
+}
+
+
+/* ETA Value */
+
+.eta-item span {
+    color: #00ffcc;
+    font-weight: bold;
+}
+
+
+/* Current Floor Indicator */
+
+.eta-item .here {
+    color: #22c55e;
+    animation: blinkETA 1s infinite;
+}
+
+
+/* ETA Blink */
+
+@keyframes blinkETA {
+
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+/* ==============================
+   REAL ELEVATOR DOOR ANIMATION
+============================== */
+
+.car-door-container {
+    overflow: hidden;
+}
+
+.door {
+    transition: all 1.2s ease-in-out;
+}
+
+
+/* Door opening */
+.door-open .left-door {
+    transform: translateX(-100%);
+}
+
+.door-open .right-door {
+    transform: translateX(100%);
+}
+
+
+/* Door closing */
+.door-close .left-door {
+    transform: translateX(0);
+}
+
+.door-close .right-door {
+    transform: translateX(0);
+}
+/* =================================
+   PASSENGER FLOOR ETA DISPLAY
+================================= */
+
+.floor-display-container {
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+
+}
+
+
+/* Individual floor display */
+
+.floor-screen {
+
+    background: #050b18;
+    border: 2px solid #00e5ff;
+    border-radius: 10px;
+
+    padding: 15px;
+
+    box-shadow: 0 0 10px #00e5ff;
+
+    transition: 0.3s;
+
+}
+
+
+/* Hover effect */
+
+.floor-screen:hover {
+
+    transform: scale(1.03);
+
+    box-shadow: 0 0 20px #00ffff;
+
+}
+
+
+/* Floor number */
+
+.floor-screen h3 {
+
+    color: #ffffff;
+
+    font-size: 18px;
+
+    margin-bottom: 10px;
+
+}
+
+
+/* Arrival information */
+
+.arrival-info {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: #00ffcc;
+
+}
+
+
+/* Direction arrow */
+
+.arrival-info span:first-child {
+
+    font-size: 24px;
+
+    animation: arrowBlink 1s infinite;
+
+}
+
+
+/* Arrow blinking */
+
+@keyframes arrowBlink {
+
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+
+/* Responsive view */
+
+@media(max-width: 600px) {
+
+    .floor-display-container {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+/* =================================
+   PASSENGER SIMULATION
+================================= */
+
+.passenger-container {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: end;
+    gap: 3px;
+
+    width: 100%;
+    height: 60px;
+}
+
+
+/* Passenger icon */
+
+.passenger {
+
+    font-size: 16px;
+
+    animation: passengerAppear 0.4s ease;
+
+}
+
+
+/* Entry animation */
+
+@keyframes passengerAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+/* =================================
+   AI PREDICTIVE MAINTENANCE
+================================= */
+
+.ai-health-grid {
+    display: grid;
+    gap: 20px;
+}
+
+
+.ai-card {
+    background: #08131f;
+    border-left: 4px solid #00e5ff;
+    padding: 25px;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+}
+
+
+.ai-card span {
+    color: #22c55e;
+    float: right;
+    font-weight: bold;
+}
+
+
+.ai-recommendation {
+    background: #111827;
+    border: 1px solid #334155;
+    padding: 25px;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+
+.ai-recommendation p {
+    margin-top: 15px;
+    color: #00ffcc;
+}
+/* =================================
+   SHAFT FLOOR LABEL FIX
+================================= */
+
+.shaft-floor-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #334155;
+}
+
+.floor-label {
+    position: absolute;
+    left: 8px;
+    top: -10px;
+    color: #94a3b8;
+    font-size: 12px;
+    z-index: 5;
+    background: #0b1220;
+    padding: 0 3px;
+}
+/* Force right control panel visibility */
+
+
+/* Cabin Load full width */
+.sensor-card:nth-child(1) {
+    grid-column: 1 / 3;
+}
+
+/* Smart ETA full width but compact */
+.sensor-card:last-child {
+    grid-column: 1 / 3;
+}
+/* Bottom dashboard layout fix */
+
+.floor-display-panel {
+    grid-column: 1 / 3;
+}
+
+.ai-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.ai-health-grid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

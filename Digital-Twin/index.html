@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELEV-X1 Digital Twin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js" defer></script>
+</head>
+
+<body>
+<div class="app-container">
+
+<!-- HEADER -->
+<header class="app-header">
+
+<div class="brand-section">
+
+<svg class="brand-logo" viewBox="0 0 24 24"
+fill="none" stroke="currentColor"
+stroke-width="2"
+stroke-linecap="round"
+stroke-linejoin="round">
+
+<rect x="3" y="3" width="18" height="18" rx="2"/>
+<line x1="9" y1="3" x2="9" y2="21"/>
+<line x1="15" y1="3" x2="15" y2="21"/>
+<line x1="3" y1="9" x2="21" y2="9"/>
+<line x1="3" y1="15" x2="21" y2="15"/>
+
+</svg>
+
+<h1 class="brand-title">
+ELEV-X1 DIGITAL TWIN
+</h1>
+
+</div>
+
+
+<div class="system-status-indicator">
+
+<span class="status-dot"></span>
+
+<span>
+SYSTEM ACTIVE
+</span>
+
+</div>
+
+
+<div class="header-meta">
+
+<div class="meta-item">
+
+<label>
+UPTIME:
+</label>
+
+<span id="header-uptime">
+00:00
+</span>
+
+</div>
+
+
+<div class="meta-item">
+
+<label>
+FLOOR:
+</label>
+
+<span id="header-floor">
+GROUND
+</span>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- MAIN GRID START -->
+
+<main class="dashboard-grid">
+<!-- LEFT PANEL : SHAFT VIEW -->
+<section class="panel">
+
+<div class="panel-header">
+
+<h2 class="panel-title">
+
+<svg viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="2">
+
+<rect x="4" y="2" width="16" height="20" rx="2"/>
+<line x1="9" y1="2" x2="9" y2="22"/>
+<line x1="15" y1="2" x2="15" y2="22"/>
+
+</svg>
+
+SHAFT VIEWPORT
+
+</h2>
+
+</div>
+
+
+<div class="panel-body">
+
+<div class="shaft-viewport">
+
+
+<!-- Elevator shaft -->
+<div class="shaft-lane">
+
+
+<!-- Floor markings -->
+
+<div class="shaft-floor" style="bottom:1%">
+GROUND
+</div>
+
+<div class="shaft-floor" style="bottom:10%">
+FLR 1
+</div>
+
+<div class="shaft-floor" style="bottom:20%">
+FLR 2
+</div>
+
+<div class="shaft-floor" style="bottom:30%">
+FLR 3
+</div>
+
+<div class="shaft-floor" style="bottom:40%">
+FLR 4
+</div>
+
+<div class="shaft-floor" style="bottom:50%">
+FLR 5
+</div>
+
+<div class="shaft-floor" style="bottom:60%">
+FLR 6
+</div>
+
+<div class="shaft-floor" style="bottom:70%">
+FLR 7
+</div>
+
+<div class="shaft-floor" style="bottom:80%">
+FLR 8
+</div>
+
+<div class="shaft-floor" style="bottom:90%">
+FLR 9
+</div>
+
+
+<!-- Elevator cabin -->
+<div id="elevator-car"
+class="elevator-car"
+style="bottom:2%;">
+
+<div class="car-top">
+CABIN
+</div>
+
+
+<div class="car-door-container">
+
+<div class="door left-door"></div>
+
+<div class="door right-door"></div>
+
+</div>
+
+
+<!-- Passenger area -->
+
+<div id="passenger-container"
+class="passenger-container">
+
+</div>
+
+
+</div>
+
+
+<!-- Counter weight -->
+
+<div id="counterweight"
+class="counterweight"
+style="bottom:80%;">
+
+CWT
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+<!-- CENTER PANEL : TELEMETRY DASHBOARD -->
+
+<section class="telemetry-dashboard">
+
+<!-- Core Status Cards -->
+
+<div class="core-stats-grid">
+
+<div class="stat-card">
+<span class="stat-label">HEIGHT</span>
+<h2>
+<span id="tel-height">0.00</span> m
+</h2>
+</div>
+
+
+<div class="stat-card">
+<span class="stat-label">SPEED</span>
+<h2>
+<span id="tel-speed">0.00</span> m/s
+</h2>
+</div>
+
+
+<div class="stat-card">
+<span class="stat-label">ACCELERATION</span>
+<h2>
+<span id="tel-accel">0.00</span> m/s²
+</h2>
+</div>
+
+
+<div class="stat-card">
+<span class="stat-label">DOOR STATUS</span>
+<h2 id="tel-door">
+CLOSED
+</h2>
+</div>
+
+</div>
+
+
+<!-- Sensor Matrix -->
+
+<div class="sensor-grid">
+
+
+<!-- Load Cell -->
+
+<div class="sensor-card">
+
+<h3>
+Cabin Load Cell
+</h3>
+
+<div class="sensor-value">
+
+<span id="tel-weight">
+0
+</span>
+
+kg / 1000 kg
+
+</div>
+
+
+<div class="load-bar">
+
+<div id="tel-weight-bar">
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<!-- Vibration Sensor -->
+
+<div class="sensor-card">
+
+<h3>
+IMU Vibration Sensor
+</h3>
+
+
+<div class="sensor-value">
+
+<span id="tel-vibration">
+0.015
+</span>
+
+m/s²
+
+</div>
+
+
+</div>
+
+
+
+<!-- Temperature Sensor -->
+
+<div class="sensor-card">
+
+<h3>
+Temperature Sensor
+</h3>
+
+
+<div class="sensor-value">
+
+<span id="tel-temp">
+21.5
+</span>
+
+°C
+
+</div>
+
+
+</div>
+
+
+
+<!-- Power Sensor -->
+
+<div class="sensor-card">
+
+<h3>
+Power Consumption
+</h3>
+
+
+<div class="sensor-value">
+
+<span id="tel-power">
+0.450
+</span>
+
+kW
+
+</div>
+
+
+</div>
+
+
+<!-- System Health -->
+
+<div class="sensor-card">
+
+<h3>
+System Health
+</h3>
+
+<div class="sensor-value">
+
+<span id="system-health">
+100
+</span>
+
+%
+
+</div>
+
+
+<p>
+Status:
+<span id="health-status">
+NORMAL
+</span>
+
+</p>
+
+
+</div>
+
+<!-- LiDAR Distance Sensor -->
+
+<div class="sensor-card">
+
+<h3>
+LiDAR Position Sensor
+</h3>
+
+<div class="sensor-value">
+
+<span id="lidar-distance">
+0.0
+</span> m
+
+
+
+</div>
+
+<p>
+Status:
+<span style="color:#22c55e">
+ONLINE
+</span>
+
+</p>
+
+</div>
+
+
+<!-- Smart ETA Panel -->
+
+<div class="sensor-card">
+
+<h3>
+SMART ARRIVAL ETA
+</h3>
+
+<div id="eta-panel">
+
+    <div class="eta-item">
+        Floor 9 :
+        <span id="eta9">--</span>
+    </div>
+
+    <div class="eta-item">
+        Floor 8 :
+        <span id="eta8">--</span>
+    </div>
+
+    <div class="eta-item">
+        Floor 7 :
+        <span id="eta7">--</span>
+    </div>
+
+    <div class="eta-item">
+        Floor 6 :
+        <span id="eta6">--</span>
+    </div>
+
+    <div class="eta-item">
+        Floor 5 :
+        <span id="eta5">--</span>
+    </div>
+
+    <div class="eta-item">
+        Floor 4 :
+        <span id="eta4">--</span>
+    </div>
+
+    <div class="eta-item">
+        Floor 3 :
+        <span id="eta3">--</span>
+    </div>
+
+    <div class="eta-item">
+        Floor 2 :
+        <span id="eta2">--</span>
+    </div>
+
+    <div class="eta-item">
+        Floor 1 :
+        <span id="eta1">--</span>
+    </div>
+
+    <div class="eta-item">
+        Ground :
+        <span id="eta0">HERE</span>
+    </div>
+
+</div>
+
+
+</div>
+
+
+</section>
+<!-- RIGHT PANEL : CONTROL & DIAGNOSTICS -->
+
+<section class="control-panel">
+
+<!-- Floor Control -->
+
+<div class="control-card">
+
+<h3>Floor Selection</h3>
+
+<div class="floor-grid">
+
+<button class="floor-btn" data-floor="9">9</button>
+<button class="floor-btn" data-floor="8">8</button>
+<button class="floor-btn" data-floor="7">7</button>
+<button class="floor-btn" data-floor="6">6</button>
+<button class="floor-btn" data-floor="5">5</button>
+
+<button class="floor-btn" data-floor="4">4</button>
+<button class="floor-btn" data-floor="3">3</button>
+<button class="floor-btn" data-floor="2">2</button>
+<button class="floor-btn" data-floor="1">1</button>
+<button class="floor-btn" data-floor="0">G</button>
+
+</div>
+
+</div>
+
+
+<!-- Load Simulation -->
+
+<div class="control-card">
+
+<h3>Cabin Cargo Load</h3>
+
+<p>
+Current Load:
+<span id="payload-value">0</span> kg
+</p>
+
+
+<input 
+type="range"
+id="payload-slider"
+min="0"
+max="1200"
+value="0"
+step="10">
+
+</div>
+
+
+
+<!-- Fault Injection -->
+
+<div class="control-card">
+
+<h3>Fault Injection</h3>
+
+
+<label class="fault-item">
+
+<input type="checkbox"
+id="fault-overload">
+
+Cabin Overload
+
+</label>
+
+
+<label class="fault-item">
+
+<input type="checkbox"
+id="fault-door">
+
+Door Obstruction
+
+</label>
+
+
+<label class="fault-item">
+
+<input type="checkbox"
+id="fault-vibration">
+
+High Vibration
+
+</label>
+
+
+<label class="fault-item">
+
+<input type="checkbox"
+id="fault-temperature">
+
+HVAC Overheat
+
+</label>
+
+
+<label class="fault-item">
+
+<input type="checkbox"
+id="fault-power">
+
+Power Failure
+
+</label>
+
+
+<label class="fault-item">
+
+<input type="checkbox"
+id="fault-estop">
+
+Emergency Stop
+
+</label>
+
+
+</div>
+
+
+
+<!-- Event Log -->
+
+<div class="control-card log-panel">
+
+<h3>System Event Log</h3>
+
+
+<button id="clear-log">
+CLEAR LOG
+</button>
+
+
+<div id="event-log">
+
+<p>
+[INFO] ELEV-X1 Digital Twin Initialized
+</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+<!-- =================================
+     PASSENGER FLOOR ETA DISPLAY
+================================== -->
+
+<section class="panel floor-display-panel">
+
+    <div class="panel-header">
+        <h2 class="panel-title">
+            PASSENGER FLOOR DISPLAY
+        </h2>
+    </div>
+
+
+    <div class="floor-display-container">
+    <div class="floor-screen">
+    <h3>Floor 9</h3>
+    <div class="arrival-info">
+        <span id="hall-dir9">⬆</span>
+        <span id="hall-eta9">-- sec</span>
+    </div>
+</div>
+
+<div class="floor-screen">
+    <h3>Floor 8</h3>
+    <div class="arrival-info">
+        <span id="hall-dir8">⬆</span>
+        <span id="hall-eta8">-- sec</span>
+    </div>
+</div>
+
+<div class="floor-screen">
+    <h3>Floor 7</h3>
+    <div class="arrival-info">
+        <span id="hall-dir7">⬆</span>
+        <span id="hall-eta7">-- sec</span>
+    </div>
+</div>
+
+<div class="floor-screen">
+    <h3>Floor 6</h3>
+    <div class="arrival-info">
+        <span id="hall-dir6">⬆</span>
+        <span id="hall-eta6">-- sec</span>
+    </div>
+</div>
+      
+        <div class="floor-screen">
+            <h3>Floor 5</h3>
+            <div class="arrival-info">
+                <span id="hall-dir5">⬆</span>
+                <span id="hall-eta5">-- sec</span>
+            </div>
+        </div>
+
+
+        <div class="floor-screen">
+            <h3>Floor 4</h3>
+            <div class="arrival-info">
+                <span id="hall-dir4">⬆</span>
+                <span id="hall-eta4">-- sec</span>
+            </div>
+        </div>
+
+
+        <div class="floor-screen">
+            <h3>Floor 3</h3>
+            <div class="arrival-info">
+                <span id="hall-dir3">⬆</span>
+                <span id="hall-eta3">-- sec</span>
+            </div>
+        </div>
+
+
+        <div class="floor-screen">
+            <h3>Floor 2</h3>
+            <div class="arrival-info">
+                <span id="hall-dir2">⬆</span>
+                <span id="hall-eta2">-- sec</span>
+            </div>
+        </div>
+
+
+        <div class="floor-screen">
+            <h3>Floor 1</h3>
+            <div class="arrival-info">
+                <span id="hall-dir1">⬆</span>
+                <span id="hall-eta1">-- sec</span>
+            </div>
+        </div>
+
+
+        <div class="floor-screen">
+            <h3>Ground Floor</h3>
+            <div class="arrival-info">
+                <span id="hall-dir0">⬆</span>
+                <span id="hall-eta0">-- sec</span>
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+<!-- =================================
+     AI PREDICTIVE MAINTENANCE
+================================== -->
+
+
+<section class="panel ai-panel">
+
+<div class="panel-header">
+<h2 class="panel-title">
+AI PREDICTIVE MAINTENANCE
+</h2>
+</div>
+
+
+<div class="ai-health-grid">
+
+<div class="ai-card">
+Motor Health:
+<span id="motor-health">100%</span>
+</div>
+
+
+<div class="ai-card">
+Door Health:
+<span id="door-health">100%</span>
+</div>
+
+
+<div class="ai-card">
+Cable Health:
+<span id="cable-health">100%</span>
+</div>
+
+
+<div class="ai-card">
+Sensor Health:
+<span id="sensor-health">100%</span>
+</div>
+
+
+<div class="ai-recommendation">
+
+AI Recommendation:
+
+<p id="ai-message">
+System operating normally.
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- END OF DASHBOARD GRID -->
+</main>
+
+
+<!-- END OF APP CONTAINER -->
+</div>
+
+
+</body>
+</html>
