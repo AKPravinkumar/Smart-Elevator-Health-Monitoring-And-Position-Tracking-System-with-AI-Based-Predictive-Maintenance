@@ -123,12 +123,7 @@ Smart-Elevator-System/
 │   ├── app.js
 │
 ├── AI-Predictive-Maintenance/
-│   ├── model.py
-│   ├── dataset.csv
-│
-├── Health-Monitoring-Dashboard/
-│   ├── dashboard.html
-│   ├── dashboard.js
+│   ├── index.html
 │
 ├── Images/
 │   ├── digital-twin-dashboard.png
@@ -136,7 +131,20 @@ Smart-Elevator-System/
 │
 └── README.md
 
+## Images
+## Digital Twin Dashboard
 
+![Digital Twin Dashboard](Images/digital-twin-dashboard.png)
+
+## AI Predictive Maintenance Dashboard
+
+![AI Dashboard](Images/predictive-maintenance-dashboard.png)
+
+## 🌐 Live Demo
+
+- 🏢 Main Project Portal: [Open Website](https://akpravinkumar.github.io/Smart-Elevator-Health-Monitoring-And-Position-Tracking-System-with-AI-Based-Predictive-Maintenance/)
+- 🚀 Digital Twin Dashboard
+- 🤖 AI Predictive Maintenance Dashboard
 
 # 🔮 Future Enhancements
 
